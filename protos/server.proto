@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package server;
+option go_package = "./pb";
+
+service DbService {
+  rpc Insert(SingleInsertRequest) returns (Empty);
+  rpc BatchInsert(BatchInsertRequest) returns (Empty);
+  rpc CheckIfExists(CheckIfExistsRequest) returns (CheckIfExistsResponse);
+}
+
+message SingleInsertRequest {
+    string value = 1;
+}
+
+message Empty {}
+
+message BatchInsertRequest {
+    repeated string values = 1;
+}
+
+message CheckIfExistsRequest {
+    string value = 1;
+}
+
+message CheckIfExistsResponse {
+    bool exists = 1;
+}

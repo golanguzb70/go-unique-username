@@ -7,6 +7,11 @@ service DbService {
   rpc Insert(SingleInsertRequest) returns (Empty);
   rpc BatchInsert(BatchInsertRequest) returns (Empty);
   rpc CheckIfExists(CheckIfExistsRequest) returns (CheckIfExistsResponse);
+  rpc Delete(SingleDeleteRequest) returns (Empty);
+}
+
+message SingleDeleteRequest {
+    string value = 1;
 }
 
 message SingleInsertRequest {

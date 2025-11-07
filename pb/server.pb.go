@@ -21,6 +21,50 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type SingleDeleteRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SingleDeleteRequest) Reset() {
+	*x = SingleDeleteRequest{}
+	mi := &file_server_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SingleDeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SingleDeleteRequest) ProtoMessage() {}
+
+func (x *SingleDeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_server_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SingleDeleteRequest.ProtoReflect.Descriptor instead.
+func (*SingleDeleteRequest) Descriptor() ([]byte, []int) {
+	return file_server_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *SingleDeleteRequest) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
 type SingleInsertRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
@@ -30,7 +74,7 @@ type SingleInsertRequest struct {
 
 func (x *SingleInsertRequest) Reset() {
 	*x = SingleInsertRequest{}
-	mi := &file_server_proto_msgTypes[0]
+	mi := &file_server_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +86,7 @@ func (x *SingleInsertRequest) String() string {
 func (*SingleInsertRequest) ProtoMessage() {}
 
 func (x *SingleInsertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_server_proto_msgTypes[0]
+	mi := &file_server_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +99,7 @@ func (x *SingleInsertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SingleInsertRequest.ProtoReflect.Descriptor instead.
 func (*SingleInsertRequest) Descriptor() ([]byte, []int) {
-	return file_server_proto_rawDescGZIP(), []int{0}
+	return file_server_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SingleInsertRequest) GetValue() string {
@@ -73,7 +117,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_server_proto_msgTypes[1]
+	mi := &file_server_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -85,7 +129,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_server_proto_msgTypes[1]
+	mi := &file_server_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -98,7 +142,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_server_proto_rawDescGZIP(), []int{1}
+	return file_server_proto_rawDescGZIP(), []int{2}
 }
 
 type BatchInsertRequest struct {
@@ -110,7 +154,7 @@ type BatchInsertRequest struct {
 
 func (x *BatchInsertRequest) Reset() {
 	*x = BatchInsertRequest{}
-	mi := &file_server_proto_msgTypes[2]
+	mi := &file_server_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -122,7 +166,7 @@ func (x *BatchInsertRequest) String() string {
 func (*BatchInsertRequest) ProtoMessage() {}
 
 func (x *BatchInsertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_server_proto_msgTypes[2]
+	mi := &file_server_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -135,7 +179,7 @@ func (x *BatchInsertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchInsertRequest.ProtoReflect.Descriptor instead.
 func (*BatchInsertRequest) Descriptor() ([]byte, []int) {
-	return file_server_proto_rawDescGZIP(), []int{2}
+	return file_server_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *BatchInsertRequest) GetValues() []string {
@@ -154,7 +198,7 @@ type CheckIfExistsRequest struct {
 
 func (x *CheckIfExistsRequest) Reset() {
 	*x = CheckIfExistsRequest{}
-	mi := &file_server_proto_msgTypes[3]
+	mi := &file_server_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -166,7 +210,7 @@ func (x *CheckIfExistsRequest) String() string {
 func (*CheckIfExistsRequest) ProtoMessage() {}
 
 func (x *CheckIfExistsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_server_proto_msgTypes[3]
+	mi := &file_server_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -179,7 +223,7 @@ func (x *CheckIfExistsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckIfExistsRequest.ProtoReflect.Descriptor instead.
 func (*CheckIfExistsRequest) Descriptor() ([]byte, []int) {
-	return file_server_proto_rawDescGZIP(), []int{3}
+	return file_server_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CheckIfExistsRequest) GetValue() string {
@@ -198,7 +242,7 @@ type CheckIfExistsResponse struct {
 
 func (x *CheckIfExistsResponse) Reset() {
 	*x = CheckIfExistsResponse{}
-	mi := &file_server_proto_msgTypes[4]
+	mi := &file_server_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -210,7 +254,7 @@ func (x *CheckIfExistsResponse) String() string {
 func (*CheckIfExistsResponse) ProtoMessage() {}
 
 func (x *CheckIfExistsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_server_proto_msgTypes[4]
+	mi := &file_server_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -223,7 +267,7 @@ func (x *CheckIfExistsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckIfExistsResponse.ProtoReflect.Descriptor instead.
 func (*CheckIfExistsResponse) Descriptor() ([]byte, []int) {
-	return file_server_proto_rawDescGZIP(), []int{4}
+	return file_server_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CheckIfExistsResponse) GetExists() bool {
@@ -238,6 +282,8 @@ var File_server_proto protoreflect.FileDescriptor
 const file_server_proto_rawDesc = "" +
 	"\n" +
 	"\fserver.proto\x12\x06server\"+\n" +
+	"\x13SingleDeleteRequest\x12\x14\n" +
+	"\x05value\x18\x01 \x01(\tR\x05value\"+\n" +
 	"\x13SingleInsertRequest\x12\x14\n" +
 	"\x05value\x18\x01 \x01(\tR\x05value\"\a\n" +
 	"\x05Empty\",\n" +
@@ -246,11 +292,12 @@ const file_server_proto_rawDesc = "" +
 	"\x14CheckIfExistsRequest\x12\x14\n" +
 	"\x05value\x18\x01 \x01(\tR\x05value\"/\n" +
 	"\x15CheckIfExistsResponse\x12\x16\n" +
-	"\x06exists\x18\x01 \x01(\bR\x06exists2\xc9\x01\n" +
+	"\x06exists\x18\x01 \x01(\bR\x06exists2\xff\x01\n" +
 	"\tDbService\x124\n" +
 	"\x06Insert\x12\x1b.server.SingleInsertRequest\x1a\r.server.Empty\x128\n" +
 	"\vBatchInsert\x12\x1a.server.BatchInsertRequest\x1a\r.server.Empty\x12L\n" +
-	"\rCheckIfExists\x12\x1c.server.CheckIfExistsRequest\x1a\x1d.server.CheckIfExistsResponseB\x06Z\x04./pbb\x06proto3"
+	"\rCheckIfExists\x12\x1c.server.CheckIfExistsRequest\x1a\x1d.server.CheckIfExistsResponse\x124\n" +
+	"\x06Delete\x12\x1b.server.SingleDeleteRequest\x1a\r.server.EmptyB\x06Z\x04./pbb\x06proto3"
 
 var (
 	file_server_proto_rawDescOnce sync.Once
@@ -264,23 +311,26 @@ func file_server_proto_rawDescGZIP() []byte {
 	return file_server_proto_rawDescData
 }
 
-var file_server_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_server_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_server_proto_goTypes = []any{
-	(*SingleInsertRequest)(nil),   // 0: server.SingleInsertRequest
-	(*Empty)(nil),                 // 1: server.Empty
-	(*BatchInsertRequest)(nil),    // 2: server.BatchInsertRequest
-	(*CheckIfExistsRequest)(nil),  // 3: server.CheckIfExistsRequest
-	(*CheckIfExistsResponse)(nil), // 4: server.CheckIfExistsResponse
+	(*SingleDeleteRequest)(nil),   // 0: server.SingleDeleteRequest
+	(*SingleInsertRequest)(nil),   // 1: server.SingleInsertRequest
+	(*Empty)(nil),                 // 2: server.Empty
+	(*BatchInsertRequest)(nil),    // 3: server.BatchInsertRequest
+	(*CheckIfExistsRequest)(nil),  // 4: server.CheckIfExistsRequest
+	(*CheckIfExistsResponse)(nil), // 5: server.CheckIfExistsResponse
 }
 var file_server_proto_depIdxs = []int32{
-	0, // 0: server.DbService.Insert:input_type -> server.SingleInsertRequest
-	2, // 1: server.DbService.BatchInsert:input_type -> server.BatchInsertRequest
-	3, // 2: server.DbService.CheckIfExists:input_type -> server.CheckIfExistsRequest
-	1, // 3: server.DbService.Insert:output_type -> server.Empty
-	1, // 4: server.DbService.BatchInsert:output_type -> server.Empty
-	4, // 5: server.DbService.CheckIfExists:output_type -> server.CheckIfExistsResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	1, // 0: server.DbService.Insert:input_type -> server.SingleInsertRequest
+	3, // 1: server.DbService.BatchInsert:input_type -> server.BatchInsertRequest
+	4, // 2: server.DbService.CheckIfExists:input_type -> server.CheckIfExistsRequest
+	0, // 3: server.DbService.Delete:input_type -> server.SingleDeleteRequest
+	2, // 4: server.DbService.Insert:output_type -> server.Empty
+	2, // 5: server.DbService.BatchInsert:output_type -> server.Empty
+	5, // 6: server.DbService.CheckIfExists:output_type -> server.CheckIfExistsResponse
+	2, // 7: server.DbService.Delete:output_type -> server.Empty
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -297,7 +347,7 @@ func file_server_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_server_proto_rawDesc), len(file_server_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

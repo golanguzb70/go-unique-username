@@ -25,6 +25,7 @@ type DbServiceClient interface {
 	Insert(ctx context.Context, in *SingleInsertRequest, opts ...grpc.CallOption) (*Empty, error)
 	BatchInsert(ctx context.Context, in *BatchInsertRequest, opts ...grpc.CallOption) (*Empty, error)
 	CheckIfExists(ctx context.Context, in *CheckIfExistsRequest, opts ...grpc.CallOption) (*CheckIfExistsResponse, error)
+	Delete(ctx context.Context, in *SingleDeleteRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type dbServiceClient struct {
@@ -62,6 +63,15 @@ func (c *dbServiceClient) CheckIfExists(ctx context.Context, in *CheckIfExistsRe
 	return out, nil
 }
 
+func (c *dbServiceClient) Delete(ctx context.Context, in *SingleDeleteRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/server.DbService/Delete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DbServiceServer is the server API for DbService service.
 // All implementations must embed UnimplementedDbServiceServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type DbServiceServer interface {
 	Insert(context.Context, *SingleInsertRequest) (*Empty, error)
 	BatchInsert(context.Context, *BatchInsertRequest) (*Empty, error)
 	CheckIfExists(context.Context, *CheckIfExistsRequest) (*CheckIfExistsResponse, error)
+	Delete(context.Context, *SingleDeleteRequest) (*Empty, error)
 	mustEmbedUnimplementedDbServiceServer()
 }
 
@@ -84,6 +95,9 @@ func (UnimplementedDbServiceServer) BatchInsert(context.Context, *BatchInsertReq
 }
 func (UnimplementedDbServiceServer) CheckIfExists(context.Context, *CheckIfExistsRequest) (*CheckIfExistsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckIfExists not implemented")
+}
+func (UnimplementedDbServiceServer) Delete(context.Context, *SingleDeleteRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedDbServiceServer) mustEmbedUnimplementedDbServiceServer() {}
 
@@ -152,6 +166,24 @@ func _DbService_CheckIfExists_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DbService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SingleDeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DbServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/server.DbService/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DbServiceServer).Delete(ctx, req.(*SingleDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DbService_ServiceDesc is the grpc.ServiceDesc for DbService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -170,6 +202,10 @@ var DbService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckIfExists",
 			Handler:    _DbService_CheckIfExists_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _DbService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

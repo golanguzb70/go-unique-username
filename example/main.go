@@ -28,23 +28,34 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Exists - %v\n", exists.Exists)
+	fmt.Printf("Exists - True:  %v\n", exists.Exists)
 
 	exists, err = client.CheckIfExists(context.Background(), &pb.CheckIfExistsRequest{Value: "baxrom"})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Exists - %v\n", exists.Exists)
+	fmt.Printf("Exists - True:  %v\n", exists.Exists)
 
 	exists, err = client.CheckIfExists(context.Background(), &pb.CheckIfExistsRequest{Value: "aziz"})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Exists - %v\n", exists.Exists)
+	fmt.Printf("Exists - True: %v\n", exists.Exists)
 
 	exists, err = client.CheckIfExists(context.Background(), &pb.CheckIfExistsRequest{Value: "azim"})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Exists - %v\n", exists.Exists)
+	fmt.Printf("Exists - False: %v\n", exists.Exists)
+
+	_, err = client.Delete(context.Background(), &pb.SingleDeleteRequest{Value: "aziz"})
+	if err != nil {
+		panic(err)
+	}
+
+	exists, err = client.CheckIfExists(context.Background(), &pb.CheckIfExistsRequest{Value: "aziz"})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Exists - False: %v\n", exists.Exists)
 }
